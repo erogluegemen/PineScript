@@ -1,0 +1,24 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © erogluegemen
+
+//@version=5
+indicator("Plot Test", overlay=true)
+
+// variable
+color_1 = color.yellow
+color_2 = color.orange
+style = plot.style_line
+ 
+// color inputs
+color_input_1 = input.color(defval=color_1, title ='Color 1:', group='Color Settings')
+color_input_2 = input.color(defval=color_2, title ='Color 2:', group='Color Settings')
+
+// line input
+linewidth_input = input.int(defval=1, step=2, minval=1, maxval=14, title='Line Width:', group='Line Settings')
+
+// source inputs
+source_input_1 = input.source(defval=open, title='Source 1:', group='Source Settings')
+source_input_2 = input.source(defval=close, title='Source 2:', group='Source Settings')
+
+plot(source_input_1, title='Plot-1', color=color_input_1, linewidth = linewidth_input, style = style)
+plot(source_input_2, title='Plot-2', color=color_input_2, linewidth = linewidth_input, style = style)
