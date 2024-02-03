@@ -1,2 +1,2 @@
-# PineScript
+# PineScript Notes
 PineScript Codes
