@@ -1,0 +1,28 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © erogluegemen
+
+//@version=5
+indicator("ATR Indicator", overlay=false)
+
+// inputs
+color_input_1 = input.color(defval=color.purple, title='Color', group='Color Settings')
+color_input_2 = input.color(defval=color.blue, title='Color', group='Color Settings')
+line_input = input.int(defval=1, step=2, minval=1, maxval=10, title = 'Line Width', group='Line Settings')
+
+rsi_source_input = input.source(defval=close, title='RSI Source', group = 'Sources')
+
+atr_period_input = input.int(defval=14, title='ATR Period', group='Indicators')
+rsi_period_input = input.int(defval=14, title='RSI Period', group = 'Indicators')
+
+// ATR (Average True Range) Function
+// formula = max(high - low, abs(high - close[1]), abs(low - close[1]))
+atr = ta.atr(atr_period_input)
+
+
+// RSI (Relative Strength Index) Function
+// formula = 100 * change(src, length) / src[length]
+rsi = ta.rsi(rsi_source_input, rsi_period_input)
+
+// Plot
+plot(atr, title='ATR Plot', color=color_input_1)
+plot(rsi, title='RSI Plot', color=color_input_2, linewidth=line_input)
